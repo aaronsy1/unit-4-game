@@ -20,24 +20,44 @@ function clickMario() {
     $("#luigi-pic").css("background","red"); 
     $("#wario-pic").css("background","red"); 
     $("#bowser-pic").css("background","red"); 
+
+    $('#charactercard2').appendTo('#enemy-cards');
+    $('#charactercard3').appendTo('#enemy-cards');
+    $('#charactercard4').appendTo('#enemy-cards');
 }
 
 function clickLuigi() {
     $("#mario-pic").css("background","red"); 
     $("#wario-pic").css("background","red"); 
     $("#bowser-pic").css("background","red"); 
+
+    $('#charactercard1').appendTo('#enemy-cards');
+    $('#charactercard3').appendTo('#enemy-cards');
+    $('#charactercard4').appendTo('#enemy-cards');
+
+
 }
 
 function clickWario() {
     $("#luigi-pic").css("background","red"); 
     $("#mario-pic").css("background","red"); 
     $("#bowser-pic").css("background","red"); 
+
+    $('#charactercard2').appendTo('#enemy-cards');
+    $('#charactercard1').appendTo('#enemy-cards');
+    $('#charactercard4').appendTo('#enemy-cards');
+
+
 }
 
 function clickBowser() {
     $("#luigi-pic").css("background","red"); 
     $("#wario-pic").css("background","red"); 
     $("#mario-pic").css("background","red"); 
+
+    $('#charactercard2').appendTo('#enemy-cards');
+    $('#charactercard3').appendTo('#enemy-cards');
+    $('#charactercard1').appendTo('#enemy-cards');
 }
 
 $("#charactercard1").on('click',function(){

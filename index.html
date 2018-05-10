@@ -11,7 +11,12 @@
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/8bit-wonder" type="text/css"/>
     <!--personal css-->
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-
+<!--linking jquery cdn-->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+    </script>
 
 </head>
 <body>
@@ -23,7 +28,8 @@
 
 
 <!--row to choose character cards-->
- <div class="row mx-0">
+
+ <div class="row mx-0" id = "choose-character">
     <div id="charactercard1" class= "text-center">
 
         <div id="char-mario">
@@ -77,8 +83,21 @@
         </div>
     </div>
 </div>
-    
 
+<!--TODO-->
+<!--need to link js, add jquery logic to move divs and change padding color for enemies-->
+    
+<div id = "enemy-cards">
+
+</div>
+
+<div id="fight-section">
+        <button type="button" class="btn btn-outline-danger">Attack</button>
+</div>
+
+<div id = "current-enemy">
+
+</div>
     
 </body>
 </html>

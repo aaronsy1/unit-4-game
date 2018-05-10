@@ -1,0 +1,31 @@
+* { 
+    font-family: '8BITWONDERNominal'; 
+    font-weight: normal; 
+    font-style: normal; 
+ }
+
+body {
+    background-image: url("../images/333222.jpg");
+    background-color: black;
+    
+ }
+
+
+
+img {
+height: 125px;
+width: 125px;
+
+padding: 25px;
+background: white;
+border: 3px solid green;
+
+ }
+
+#charactercard1, #charactercard2, #charactercard3, #charactercard4 {
+    margin: 5px;
+}
+
+ #game-title {
+     font-size: 30px;
+ }

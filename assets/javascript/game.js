@@ -1,17 +1,44 @@
-let marioHp = 100;
-let luigiHp = 100;
-let warioHp = 100;
-let bowserHp = 100;
+var mario = {
+    hp:  100,
+    attack: 4,
+    counter: 15,
+}
 
-let marioAtk = 4;
-let luigiAtk = 4;
-let warioAtk = 6;
-let bowserAtk = 8;
+var luigi = {
+    hp: 100,
+    attack: 4,
+    counter: 10,
+}
 
-let marioCounter = 10;
-let luigiCounter = 10;
-let warioCounter = 15;
-let bowsercounter = 23;
+var wario = {
+    hp: 100,
+    attack: 4,
+    counter: 15,
+}
+
+var bowser = {
+    hp: 100,
+    attack: 8,
+    counter: 20,
+}
+
+var currentChar = {
+    hp: 0,
+    attack: 0
+    
+}
+
+var currentEnemy = {
+    hp: 0,
+    attack: 0,
+    counter: 0,
+}
+
+let intitalMario = 4;
+let initialLuigi = 4;
+let initialWario = 4;
+let initialBowser = 8;
+
 
 let isDefeatedEnemy = false;
 let isGameOver = false;
@@ -26,8 +53,9 @@ let isCurrentEnemyBowser = true;
 
 //on clicks
 
+
+
 $("#charactercard1").on('click', function () {
-    //  console.log($("#charactercard1").value);
     if (isMario === true) {
         clickMario();
     };
@@ -57,6 +85,9 @@ $("#charactercard4").on('click', function () {
 
 //when you click one of the character cards the others turn red and shift to an enemy div
 function clickMario() {
+
+    currentChar = mario;
+
     $("#luigi-pic").css("background", "red");
     $("#wario-pic").css("background", "red");
     $("#bowser-pic").css("background", "red");
@@ -69,6 +100,8 @@ function clickMario() {
     isLuigi = false;
     isWario = false;
     isBowser = false;
+
+    
 
     //next onclick
 
@@ -94,6 +127,9 @@ function clickMario() {
 }
 
 function clickLuigi() {
+
+    currentChar = luigi;
+
     $("#mario-pic").css("background", "red");
     $("#wario-pic").css("background", "red");
     $("#bowser-pic").css("background", "red");
@@ -106,6 +142,9 @@ function clickLuigi() {
     isLuigi = false;  
     isWario = false;
     isBowser = false;
+
+
+   
 
     $("#charactercard1").on('click', function () {
         if (isMario === false){
@@ -130,6 +169,9 @@ function clickLuigi() {
 }
 
 function clickWario() {
+
+    currentChar = wario;
+
     $("#luigi-pic").css("background", "red");
     $("#mario-pic").css("background", "red");
     $("#bowser-pic").css("background", "red");
@@ -143,6 +185,9 @@ function clickWario() {
     isBowser = false;
     isWario = false;
 
+
+
+    
     $("#charactercard1").on('click', function () {
         if (isMario === false){
         enemyMario();
@@ -165,6 +210,9 @@ function clickWario() {
 }
 
 function clickBowser() {
+
+    currentChar = bowser;
+
     $("#luigi-pic").css("background", "red");
     $("#wario-pic").css("background", "red");
     $("#mario-pic").css("background", "red");
@@ -202,6 +250,9 @@ function clickBowser() {
 //choosing current enemy functions
 
 function enemyMario(){
+
+    currentEnemy = mario;
+
     if (isCurrentEnemyMario ===true) {
     $("#mario-pic").css("background", "white");
     $('#charactercard1').appendTo('#current-enemy');
@@ -210,9 +261,14 @@ function enemyMario(){
         isCurrentEnemyWario = false;
         isCurrentEnemyBowser = false;
     }
+
+    battleEnemy();
 }
 
 function enemyLuigi(){
+
+    currentEnemy = luigi;
+
     if (isCurrentEnemyLuigi ===true) {
     $("#luigi-pic").css("background", "white");
     $('#charactercard2').appendTo('#current-enemy');
@@ -221,9 +277,14 @@ function enemyLuigi(){
         isCurrentEnemyWario = false;
         isCurrentEnemyBowser = false;
     }
+
+    battleEnemy();
 }
 
 function enemyWario(){
+
+    currentEnemy = wario;
+
     if (isCurrentEnemyWario === true) {
     $("#wario-pic").css("background", "white");
     $('#charactercard3').appendTo('#current-enemy');
@@ -232,9 +293,14 @@ function enemyWario(){
         isCurrentEnemyLuigi = false;
         isCurrentEnemyBowser = false;
     }
+
+    battleEnemy();
 }
 
 function enemyBowser(){
+
+    currentEnemy = bowser;
+
     if (isCurrentEnemyBowser === true) {
     $("#bowser-pic").css("background", "white");
     $('#charactercard4').appendTo('#current-enemy');
@@ -243,4 +309,17 @@ function enemyBowser(){
         isCurrentEnemyWario = false;
         isCurrentEnemyBowser = false;
     }
+
+    battleEnemy();
+}
+
+function battleEnemy() {
+
+    $("#attackBtn").on('click',function(){
+
+        currentEnemy.hp -= currentChar.attack;
+        currentChar.attack += 4;
+        console.log(currentEnemy.hp);
+    });
+    
 }

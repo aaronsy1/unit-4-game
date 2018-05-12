@@ -31,7 +31,9 @@
 
  <div class="row mx-0" id = "choose-character">
 
-    <div id="charactercard1" class= "text-center" value="true">
+   
+
+    <div id="charactercard1" class= "text-center" >
 
         <div id="char-mario">
             <h5>Mario</h5>
@@ -85,6 +87,8 @@
     </div>
 </div>
 
+<p>Your character</p>
+
 <!--TODO-->
 <!--need to link js, add jquery logic to move divs and change padding color for enemies-->
     
@@ -94,9 +98,11 @@
 
 </div>
 
+<p>Enemies available to attack</p>
+
 <div class="row mx-0" id="fight-section">
 
-        <button type="button" class="btn btn-outline-danger ">Attack</button>
+        <button type="button" class="btn btn-outline-danger " id = "attackBtn" >Attack</button>
 
 </div>
 
@@ -105,6 +111,8 @@
 
 </div>
     
+<p>Current enemy</p>
+
 </body>
 
 <script src="./assets/javascript/game.js"></script>

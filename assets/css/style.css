@@ -23,8 +23,10 @@ border: 3px solid green;
 
 #charactercard1, #charactercard2, #charactercard3, #charactercard4 {
     margin: 5px;
+    
 }
 
  #game-title {
      font-size: 30px;
  }
+

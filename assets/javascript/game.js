@@ -38,6 +38,7 @@ let intitalMario = 4;
 let initialLuigi = 4;
 let initialWario = 4;
 let initialBowser = 8;
+let initialAtk = 0;
 
 
 let isDefeatedEnemy = false;
@@ -46,6 +47,10 @@ let isMario = true;
 let isLuigi = true;
 let isWario = true;
 let isBowser = true;
+let isCurrentCharMario = false;
+let isCurrentCharLuigi = false;
+let isCurrentCharWario = false;
+let isCurrentCharBowser = false;
 let isCurrentEnemyMario = true;
 let isCurrentEnemyLuigi = true;
 let isCurrentEnemyWario = true;
@@ -57,6 +62,7 @@ let isCurrentEnemyBowser = true;
 
 $("#charactercard1").on('click', function () {
     if (isMario === true) {
+        isCurrentCharMario = true;
         clickMario();
     };
 
@@ -65,12 +71,14 @@ $("#charactercard1").on('click', function () {
 
 $("#charactercard2").on('click', function () {
     if (isLuigi === true){
-    clickLuigi();
+        isCurrentCharLuigi = true;
+        clickLuigi();
     };
 });
 
 $("#charactercard3").on('click', function () {
     if (isWario === true){
+        isCurrentCharWario = true;
         clickWario();
         };
     });
@@ -78,6 +86,7 @@ $("#charactercard3").on('click', function () {
 $("#charactercard4").on('click', function () {
 
     if (isBowser === true){
+        isCurrentCharBowser = true;
         clickBowser();
         };
 });
@@ -87,6 +96,8 @@ $("#charactercard4").on('click', function () {
 function clickMario() {
 
     currentChar = mario;
+    initialAtk = intitalMario;
+    
 
     $("#luigi-pic").css("background", "red");
     $("#wario-pic").css("background", "red");
@@ -129,6 +140,7 @@ function clickMario() {
 function clickLuigi() {
 
     currentChar = luigi;
+    initialAtk = initialLuigi
 
     $("#mario-pic").css("background", "red");
     $("#wario-pic").css("background", "red");
@@ -171,6 +183,7 @@ function clickLuigi() {
 function clickWario() {
 
     currentChar = wario;
+    initialAtk = initialWario;
 
     $("#luigi-pic").css("background", "red");
     $("#mario-pic").css("background", "red");
@@ -212,6 +225,7 @@ function clickWario() {
 function clickBowser() {
 
     currentChar = bowser;
+    initialAtk = initialBowser;
 
     $("#luigi-pic").css("background", "red");
     $("#wario-pic").css("background", "red");
@@ -318,8 +332,45 @@ function battleEnemy() {
     $("#attackBtn").on('click',function(){
 
         currentEnemy.hp -= currentChar.attack;
-        currentChar.attack += 4;
-        console.log(currentEnemy.hp);
+        currentChar.hp -= currentEnemy.counter;
+        $("#battle-text").text("You dealt " + currentChar.attack + " damage");
+        $("#counter-text").text("You took " + currentEnemy.counter + " damage");
+        currentChar.attack += initialAtk;
+
+        if (isCurrentCharMario === true){
+            $("#mario-hp").text(currentChar.hp);
+        }
+
+        else if (isCurrentCharLuigi === true){
+            $("#luigi-hp").text(currentChar.hp);
+        }
+
+        else if (isCurrentCharWario === true){
+            $("#wario-hp").text(currentEnemy.hp);
+        }
+
+        else if (isCurrentCharBowser === true){
+            $("#bowser-hp").text(currentChar.hp);
+        }
+       
+        
+        if (isCurrentEnemyMario === true){
+            $("#mario-hp").text(currentEnemy.hp);
+        }
+
+        else if (isCurrentEnemyLuigi === true){
+            $("#luigi-hp").text(currentEnemy.hp);
+        }
+
+        else if (isCurrentEnemyWario === true){
+            $("#wario-hp").text(currentEnemy.hp);
+        }
+
+        else if (isCurrentEnemyBowser === true){
+            $("#bowser-hp").text(currentEnemy.hp);
+        }
+       
+        
     });
     
 }

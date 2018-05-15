@@ -1,64 +1,75 @@
+//setting objects 
+
 var mario = {
+    name: 'mario',
     hp:  100,
-    attack: 4,
+    attack: 8,
     counter: 15,
 }
 
 var luigi = {
+    name: 'luigi',
     hp: 100,
     attack: 4,
     counter: 10,
 }
 
 var wario = {
+    name: 'wario',
     hp: 100,
     attack: 4,
     counter: 15,
 }
 
 var bowser = {
+    name: 'bowser',
     hp: 100,
     attack: 8,
-    counter: 20,
+    counter: 50,
 }
 
 var currentChar = {
+    name: 'char',
     hp: 0,
     attack: 0
     
 }
 
 var currentEnemy = {
+    name: 'enemy',
     hp: 0,
     attack: 0,
     counter: 0,
 }
 
-let intitalMario = 4;
+// set variables for initial attacks in order to increment currentChar attack by this value
+
+let intitalMario = 8;
 let initialLuigi = 4;
 let initialWario = 4;
 let initialBowser = 8;
 let initialAtk = 0;
 
-
+// reset conditions
 let isDefeatedEnemy = false;
 let isGameOver = false;
+// choosing character condition
 let isMario = true;
 let isLuigi = true;
 let isWario = true;
 let isBowser = true;
+// to see which is cuurent character
 let isCurrentCharMario = false;
 let isCurrentCharLuigi = false;
 let isCurrentCharWario = false;
 let isCurrentCharBowser = false;
+// to see which is current enemy
 let isCurrentEnemyMario = true;
 let isCurrentEnemyLuigi = true;
 let isCurrentEnemyWario = true;
 let isCurrentEnemyBowser = true;
 
-//on clicks
-
-
+// first click to decide character
 
 $("#charactercard1").on('click', function () {
     if (isMario === true) {
@@ -114,7 +125,7 @@ function clickMario() {
 
     
 
-    //next onclick
+    //next onclick to decide current enemy
 
     $("#charactercard2").on('click', function () {
         if (isLuigi === false){
@@ -321,56 +332,111 @@ function enemyBowser(){
 
         isCurrentEnemyMario = false;
         isCurrentEnemyWario = false;
-        isCurrentEnemyBowser = false;
+        isCurrentEnemyLuigi = false;
     }
+
+
+    
 
     battleEnemy();
 }
+
+        // function that initiates battle logic
 
 function battleEnemy() {
 
     $("#attackBtn").on('click',function(){
 
+
+        // text to show how much damage was taken, and manipulate hp
+
+  
+
         currentEnemy.hp -= currentChar.attack;
+        $("#battle-text").text("You dealt " + currentEnemy.name + " " + currentChar.attack + " damage");
+        
+        if(currentEnemy.hp > 0){
         currentChar.hp -= currentEnemy.counter;
-        $("#battle-text").text("You dealt " + currentChar.attack + " damage");
         $("#counter-text").text("You took " + currentEnemy.counter + " damage");
         currentChar.attack += initialAtk;
+        }
+
+        else{
+
+            $("#counter-text").text("You beat " +currentEnemy.name);
+        }
+
+        // to change hp under current char 
 
         if (isCurrentCharMario === true){
             $("#mario-hp").text(currentChar.hp);
+            if (currentChar.hp === 0) {
+                $("#battle-text").text("YOU LOSE");
+            }
         }
 
         else if (isCurrentCharLuigi === true){
             $("#luigi-hp").text(currentChar.hp);
+            if (currentChar.hp === 0) {
+                $("#battle-text").text("YOU LOSE");
+            }
         }
 
         else if (isCurrentCharWario === true){
-            $("#wario-hp").text(currentEnemy.hp);
+            $("#wario-hp").text(currentChar.hp);
+            if (currentChar.hp === 0) {
+                $("#battle-text").text("YOU LOSE");
+            }
         }
 
         else if (isCurrentCharBowser === true){
             $("#bowser-hp").text(currentChar.hp);
+            if (currentChar.hp === 0) {
+                $("#battle-text").text("YOU LOSE");
+            }
         }
        
+        // display current hp of enemy and show when enemy hp is 0
         
         if (isCurrentEnemyMario === true){
+            if (currentEnemy.hp <= 0){
+                $("#mario-hp").text("0");
+            }
+            else {
             $("#mario-hp").text(currentEnemy.hp);
+            }
         }
 
         else if (isCurrentEnemyLuigi === true){
+            if (currentEnemy.hp <= 0){
+                $("#luigi-hp").text("0");
+            }
+            else {
             $("#luigi-hp").text(currentEnemy.hp);
+            }
         }
 
         else if (isCurrentEnemyWario === true){
+            if (currentEnemy.hp <= 0){
+                $("#wario-hp").text("0");
+            }
+            else {
             $("#wario-hp").text(currentEnemy.hp);
+            }
         }
 
         else if (isCurrentEnemyBowser === true){
+            if (currentEnemy.hp <= 0){
+                $("#bowser-hp").text("0");
+            }
+            else {
             $("#bowser-hp").text(currentEnemy.hp);
+            }
         }
        
         
     });
     
 }
+
+
